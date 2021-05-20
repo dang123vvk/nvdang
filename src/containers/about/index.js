@@ -2,7 +2,7 @@ import React from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
 import { makeStyles, Typography, useMediaQuery, useTheme } from '@material-ui/core';
-import useTrans from '../../../pages/hooks/useTrans';
+import useTrans from '../../components/hooks/useTrans';
 const useStyles = makeStyles((theme) => ({
     root: {
         height: '100%'

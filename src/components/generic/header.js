@@ -10,7 +10,7 @@ import GitHubIcon from '@material-ui/icons/GitHub';
 import MenuIcon from '@material-ui/icons/Menu';
 import Link from 'next/link'
 import { useRouter } from 'next/router'
-import useTrans from '../../../pages/hooks/useTrans'
+import useTrans from '../hooks/useTrans'
 // import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 const useStyles = makeStyles((theme) => ({

@@ -1,0 +1,10 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://nvdang.dev
+
+# Sitemaps
+Sitemap: https://nvdang.dev/sitemap.xml
+Sitemap: https://nvdang.dev/server-sitemap.xml
