@@ -4,7 +4,7 @@ This is a starter template for [Learn Next.js](https://nextjs.org/learn).
 
 This web uses: 
               
-              - React framework: Nextjs: https://nextjs.org/
+               - React framework: Nextjs: https://nextjs.org/
                
                - UI: Material-UI: https://material-ui.com/
                
