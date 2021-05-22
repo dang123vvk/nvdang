@@ -9,5 +9,6 @@ export default {
         name: "Mình là Nguyễn Văn Đặng",
         from: "Hiện tại mình sống ở thành phố Hồ Chí Minh.",
         special : "Mình là một người hơi trẻ tầm 30 tuổi...😔😔😔"
-    }
+    },
+    comming: 'Hãy chờ đợi bạn 😉😉😉 '
 }

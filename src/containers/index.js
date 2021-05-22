@@ -23,7 +23,7 @@ const useStyles = makeStyles(theme => ({
         height: '100%'
     },
 }));
-export default function Main() {
+export default function Layout() {
     const classes = useStyles();
     return (
             <div className={classes.root}>

@@ -9,5 +9,6 @@ export default {
         name: "I am Dang.",
         from: "I am from Vietnam.",
         special : "I am a cute guy...😉😉"
-    }
+    },
+    comming: 'Comming soon ...'
 }

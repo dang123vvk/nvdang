@@ -1,28 +1,27 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
-import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
+import { ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import theme from '../src/config/theme';
+import { themeDart, themeLight } from '../src/config/theme';
 import { Provider } from 'react-redux';
 import store from '../src/redux/store'
-import dynamic from 'next/dynamic';
-
-const Header = dynamic(
-  () => import('../src/components/generic/header'),
-  { ssr: false }
-)
+// import dynamic from 'next/dynamic';
+import Header from '../src/components/generic/header'
 function MyApp(props) {
   const { Component, pageProps } = props;
-
-  React.useEffect(() => {
+  const [modeTheme, setModeTheme] = useState('light')
+  useEffect(() => {
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector('#jss-server-side');
     if (jssStyles) {
       jssStyles.parentElement.removeChild(jssStyles);
     }
   }, []);
-
+const changeModeTheme = (e,modeTheme) => {
+  e.preventDefault();
+  setModeTheme(modeTheme);
+}
   return (
     <Provider store={store}>
       <React.Fragment>
@@ -45,12 +44,12 @@ function MyApp(props) {
             }}
           />
         </Head>
-        <ThemeProvider theme={theme}>
+        <ThemeProvider theme={modeTheme==='light' ? themeLight: themeDart}>
           <CssBaseline />
-          <div style={{ display: 'flex',backgroundColor: '#ffff',flexDirection: 'column',height: '100vh' }}>
-            <Header />
-            <main style={{height: '100%'}}>
-              <Component {...pageProps}/>
+          <div style={{ display: 'flex', backgroundColor: '#ffff', flexDirection: 'column', height: '100vh' }}>
+            <Header changeModeTheme ={changeModeTheme} modeTheme={modeTheme}/>
+            <main style={{ height: '100%' }}>
+              <Component {...pageProps} />
             </main>
           </div>
         </ThemeProvider>

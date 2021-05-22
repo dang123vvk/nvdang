@@ -4,10 +4,7 @@ import vi from '../../i18n/lang/vi.js'
 
 const useTrans = () => {
     const { locale } = useRouter()
-
-
     const trans = locale === 'vi' ? vi : en
-
     return trans
 }
 

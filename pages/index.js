@@ -1,11 +1,8 @@
-import { Box, Container, Typography } from '@material-ui/core'
 import 'animate.css';
 import 'bootstrap/dist/css/bootstrap.css';
-import dynamic from 'next/dynamic'
-const Main = dynamic(
-  () => import('../src/containers/home'),
-  { ssr: false }
-)
+// import dynamic from 'next/dynamic'
+import Main from '../src/containers/home'
+
 export default function Index() {
   return (
     <Main  />
