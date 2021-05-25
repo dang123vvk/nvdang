@@ -3,12 +3,19 @@ export default {
     menu: {
         utilities: "Thêm",
         blog: "Blog",
-        about: "Về tôi"
+        about: "Về tôi",
+        modeTheme: 'Chế độ sáng/tối',
+        utility: {
+            cv: 'CV',
+            ecommerce: 'Thương mại điện tử',
+            testing: 'Trắc nghiệm',
+            toeic: 'TOEIC'
+        }
     },
     about: {
         name: "Mình là Nguyễn Văn Đặng",
         from: "Hiện tại mình sống ở thành phố Hồ Chí Minh.",
         special : "Mình là một người hơi trẻ tầm 30 tuổi...😔😔😔"
     },
-    comming: 'Hãy chờ đợi bạn 😉😉😉 '
+    coming: 'Hãy chờ đợi bạn 😉😉😉 '
 }

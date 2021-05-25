@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useRef, useState } from 'react';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import { Button, Drawer, List, ListItem, ListItemIcon, ListItemText, makeStyles, Tooltip, useMediaQuery, useTheme } from '@material-ui/core';
+import { Button, Collapse, Drawer, List, ListItem, ListItemIcon, ListItemText, makeStyles, Tooltip, useMediaQuery, useTheme } from '@material-ui/core';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import IconButton from '@material-ui/core/IconButton';
 import InstagramIcon from '@material-ui/icons/Instagram';
@@ -13,6 +13,7 @@ import { useRouter } from 'next/router'
 import useTrans from '../hooks/useTrans'
 import Brightness7Icon from '@material-ui/icons/Brightness7';
 import Brightness4Icon from '@material-ui/icons/Brightness4';
+import UtilityMenu from '../dropdown/utilityMenu';
 // import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 const socialNetworks = [{
   icon: <FacebookIcon />,
@@ -51,18 +52,54 @@ const useStyles = makeStyles((theme) => ({
   },
   noneButton: {
     border: 0
-  }
+  },
+  nested: {
+    paddingLeft: theme.spacing(4),
+  },
 }));
 function Header({modeTheme, changeModeTheme}) {
-  const [stateMenu, setStateMenu] = React.useState(false);
+  const [stateMenu, setStateMenu] = useState(false);
   const theme = useTheme();
+  const utilityRef = useRef(null);
+  const [openUtility, setOpenUtility] = useState(false);
   const router = useRouter()
   const { locale } = useRouter()
   const t = useTrans()
   const sm = useMediaQuery(theme.breakpoints.down("xs"));
   const xs = useMediaQuery(theme.breakpoints.down("md"));
   const classes = useStyles();
+  const [openMobileUtility, setOpenMobileUtility] = React.useState(false);
 
+  const handleClickMobileUtility = () => {
+    setOpenMobileUtility(!openMobileUtility);
+  };
+  const handleToggleUtility = () => {
+    setOpenUtility((prevOpen) => !prevOpen);
+  };
+  const handleCloseUtility = (event) => {
+    if (utilityRef.current && utilityRef.current.contains(event.target)) {
+      return;
+    }
+    setOpenUtility(false);
+  };
+  function handleListKeyDown(event) {
+    if (event.key === 'Tab') {
+      event.preventDefault();
+      setOpenUtility(false);
+    }
+  }
+
+  // return focus to the button when we transitioned from !open -> open
+  const prevOpen = useRef(openUtility);
+  React.useEffect(() => {
+    if (prevOpen.current === true && openUtility === false) {
+      if(utilityRef.current){
+        utilityRef.current.focus();
+      }
+    }
+
+    prevOpen.current = open;
+  }, [openUtility]);
   const changeLang = (lang) => {
     const currentRoute = router.pathname
     router.push(currentRoute, currentRoute, { locale: lang })
@@ -78,14 +115,35 @@ function Header({modeTheme, changeModeTheme}) {
     router.push(href)
     setStateMenu(false)
   }
+
   const list = () => (
     <div
       className={classes.list}
       role="presentation"
     >
       <List>
-        {[t.menu.utilities, t.menu.blog, t.menu.about].map((text, index) => (
+      <ListItem button onClick={handleClickMobileUtility} >
+            <ListItemText primary={t.menu.utilities} />
+        </ListItem>
+        <Collapse in={openMobileUtility} timeout="auto" unmountOnExit>
+        <List component="div" disablePadding>
+          <ListItem button className={classes.nested}>
+            <ListItemText primary={t.menu.utility.cv} />
+          </ListItem>
+          <ListItem button className={classes.nested}>
+            <ListItemText primary={t.menu.utility.ecommerce} />
+          </ListItem>
+          <ListItem button className={classes.nested}>
+            <ListItemText primary={t.menu.utility.testing} />
+          </ListItem>
+          <ListItem button className={classes.nested}>
+            <ListItemText primary={t.menu.utility.toeic} />
+          </ListItem>
+        </List>
+      </Collapse>
+        {[t.menu.blog, t.menu.about].map((text, index) => (
           <ListItem button key={text} onClick={e => goTo(e, text === t.menu.about ? '/about' : '/')} key={index}>
+
             <ListItemText primary={text} />
             {/* <ListItemIcon>{index % 2 === 0 ? <FacebookIcon /> : <InstagramIcon />}</ListItemIcon> */}
 
@@ -126,7 +184,8 @@ function Header({modeTheme, changeModeTheme}) {
           <Toolbar>
             <Typography variant="h6" className={classes.title}>
             </Typography>
-            <Link href="/"><Button color="inherit" className={classes.linkButton}>{t.menu.utilities}</Button></Link>
+            <Button  color="inherit" className={classes.linkButton}  ref={utilityRef} onClick={handleToggleUtility}>{t.menu.utilities}</Button>
+            <UtilityMenu anchorRef={utilityRef} open={openUtility} handleClose={handleCloseUtility} handleListKeyDown={handleListKeyDown} />
             <Button color="inherit" className={classes.linkButton}>{t.menu.blog}</Button>
             <Link href="/about"><Button color="inherit" className={classes.linkButton}>{t.menu.about}</Button></Link>
             {socialNetworks.map((data, index) => (
@@ -134,7 +193,7 @@ function Header({modeTheme, changeModeTheme}) {
                 {data.icon}
               </IconButton>
             ))}
-            <Tooltip title="Light/Dark theme">
+            <Tooltip title={t.menu.modeTheme}>
               <IconButton onClick={e=>changeModeTheme(e,modeTheme==='light'? 'dark': 'light')} color="inherit" aria-label="upload picture" component="span" className={classes.iconButton}>
                 {modeTheme==='light' ? <Brightness7Icon /> : <Brightness4Icon /> }
               </IconButton>
