@@ -127,7 +127,7 @@ function Header({modeTheme, changeModeTheme}) {
         </ListItem>
         <Collapse in={openMobileUtility} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
-          <ListItem button className={classes.nested}>
+          <ListItem button className={classes.nested} onClick={e=>goTo(e,'/utilities/cv')}>
             <ListItemText primary={t.menu.utility.cv} />
           </ListItem>
           <ListItem button className={classes.nested}>
@@ -136,7 +136,7 @@ function Header({modeTheme, changeModeTheme}) {
           <ListItem button className={classes.nested}>
             <ListItemText primary={t.menu.utility.testing} />
           </ListItem>
-          <ListItem button className={classes.nested}>
+          <ListItem button className={classes.nested} onClick={e=>goTo(e,'/utilities/toeic')}>
             <ListItemText primary={t.menu.utility.toeic} />
           </ListItem>
         </List>
@@ -185,7 +185,7 @@ function Header({modeTheme, changeModeTheme}) {
             <Typography variant="h6" className={classes.title}>
             </Typography>
             <Button  color="inherit" className={classes.linkButton}  ref={utilityRef} onClick={handleToggleUtility}>{t.menu.utilities}</Button>
-            <UtilityMenu anchorRef={utilityRef} open={openUtility} handleClose={handleCloseUtility} handleListKeyDown={handleListKeyDown} />
+            <UtilityMenu anchorRef={utilityRef} open={openUtility} handleClose={handleCloseUtility} handleListKeyDown={handleListKeyDown} onClick={goTo} />
             <Button color="inherit" className={classes.linkButton}>{t.menu.blog}</Button>
             <Link href="/about"><Button color="inherit" className={classes.linkButton}>{t.menu.about}</Button></Link>
             {socialNetworks.map((data, index) => (
