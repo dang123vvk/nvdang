@@ -7,6 +7,7 @@ import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import useTrans from '../hooks/useTrans';
 
 const useStyles = makeStyles({
     root: {
@@ -17,6 +18,7 @@ const useStyles = makeStyles({
 
 export default function CardMenu({title, link, disable, go}) {
     const classes = useStyles();
+    const t = useTrans()
     return (
         <Card className={classes.root}>
             <CardActionArea>
@@ -32,8 +34,8 @@ export default function CardMenu({title, link, disable, go}) {
                 </CardContent>
             </CardActionArea>
             <CardActions>
-                <Button size="small" color="primary" disabled={disable} onClick={e=>go(e,link)}>Test</Button>
-                <Button size="small" color="primary" disabled>Learn</Button>
+                <Button size="small" color="secondary" disabled={disable} onClick={e=>go(e,link)}>{t.utilities.toeic.test}</Button>
+                <Button size="small" color="primary" disabled>{t.utilities.toeic.learn}</Button>
             </CardActions>
         </Card>
     );

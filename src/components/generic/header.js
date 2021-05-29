@@ -114,6 +114,7 @@ function Header({modeTheme, changeModeTheme}) {
     e.preventDefault()
     router.push(href)
     setStateMenu(false)
+    setOpenUtility(false);
   }
 
   const list = () => (
