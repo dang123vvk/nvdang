@@ -28,7 +28,6 @@ export default {
             partFive: 'Part 5',
             partSix: 'Part 6',
             partSeven: 'Part 7',
-            partEight: 'Part 8',
             fullTest: 'Full Test',
             test: 'Test',
             learn: 'Learn'

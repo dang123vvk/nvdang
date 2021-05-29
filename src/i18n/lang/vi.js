@@ -20,7 +20,7 @@ export default {
     coming: 'Hãy chờ đợi bạn 😉😉😉 ',
     utilities: {
         toeic: {
-            title: 'Trắc nghiệm Toeic trực tuyến Beta',
+            title: 'Trắc nghiệm Toeic Beta',
             partOne: 'Phần 1',
             partTwo: 'Phần 2',
             partThree: 'Phần 3',
@@ -28,9 +28,8 @@ export default {
             partFive: 'Phần 5',
             partSix: 'Phần 6',
             partSeven: 'Phần 7',
-            partEight: 'Phần 8',
             fullTest: 'Đầy đủ',
-            test: 'Kiểm tra',
+            test: 'Kiểm thử',
             learn: 'Học'
         }
     }

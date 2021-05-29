@@ -50,21 +50,21 @@ export default function ToeicContainer() {
     let menus1 = [
         {
             title: t.utilities.toeic.partOne,
-            link: '/utilities/toiec/part-one',
+            link: '/utilities/toeic/part-1',
             disable: true
         },
         {
             title: t.utilities.toeic.partTwo,
-            link: '/utilities/toiec/part-two',
+            link: '/utilities/toeic/part-2',
             disable: true
         },
         { title: t.utilities.toeic.partThree,
-            link: '/utilities/toiec/part-three',
+            link: '/utilities/toeic/part-3',
             disable: true
         },
         {
             title: t.utilities.toeic.partFour,
-            link: '/utilities/toiec/part-four',
+            link: '/utilities/toeic/part-4',
             disable: true
         }
     ];
@@ -72,22 +72,22 @@ export default function ToeicContainer() {
     let menus2 = [
         {
             title: t.utilities.toeic.partFive,
-            link: '/utilities/toiec/part-five',
-            disable: true
+            link: '/utilities/toeic/part-5',
+            disable: false
         },
         , {
             title: t.utilities.toeic.partSix,
-            link: '/utilities/toiec/part-six',
+            link: '/utilities/toeic/part-6',
             disable: true
         },
         {
             title: t.utilities.toeic.partSeven,
-            link: '/utilities/toiec/part-seven',
+            link: '/utilities/toeic/part-7',
             disable: true
         },
         {
             title: t.utilities.toeic.fullTest,
-            link: '/utilities/toiec/full-test',
+            link: '/utilities/toeic/full-test',
             disable: true
         }
     ]

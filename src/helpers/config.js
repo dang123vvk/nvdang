@@ -1,0 +1,1 @@
+export const SERVER = 'https://gentle-thicket-87247.herokuapp.com'
