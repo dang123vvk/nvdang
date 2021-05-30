@@ -29,7 +29,7 @@ const socialNetworks = [{
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    flexGrow: 1,
+    // flexGrow: 1,
   },
   menuButton: {
     marginRight: theme.spacing(2),
@@ -164,7 +164,7 @@ function Header({modeTheme, changeModeTheme}) {
   }
   return (
     <div className={classes.root}>
-      <AppBar position="static" style={{ backgroundColor: modeTheme==='light'? '#455a64': '#333' }}>
+      <AppBar position="static" style={{ backgroundColor: modeTheme==='light'? '#455a64': '#1f2936' }}>
         {sm || xs ? (
           <Toolbar>
             <Typography variant="h6" className={classes.title}>

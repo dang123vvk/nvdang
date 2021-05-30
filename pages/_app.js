@@ -6,6 +6,8 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import { themeDart, themeLight } from '../src/config/theme';
 import { Provider } from 'react-redux';
 import store from '../src/redux/store'
+import 'animate.css';
+import 'bootstrap/dist/css/bootstrap.css';
 // import dynamic from 'next/dynamic';
 import Header from '../src/components/generic/header'
 function MyApp(props) {
@@ -46,9 +48,9 @@ const changeModeTheme = (e,modeTheme) => {
         </Head>
         <ThemeProvider theme={modeTheme==='light' ? themeLight: themeDart}>
           <CssBaseline />
-          <div style={{ display: 'flex', backgroundColor: '#ffff', flexDirection: 'column', height: '100vh' }}>
+          <div style={{ display: 'flex', flexDirection: 'column', height: 'auto', minHeight: '100vh', backgroundColor: modeTheme==='light' ?'#ffffff': '#4b5563' }}>
             <Header changeModeTheme ={changeModeTheme} modeTheme={modeTheme}/>
-            <main style={{ height: '100%' }}>
+            <main style={{ height: '100%',  }}>
               <Component {...pageProps} />
             </main>
           </div>

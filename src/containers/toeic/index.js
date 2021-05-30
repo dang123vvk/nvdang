@@ -11,8 +11,9 @@ import useTrans from '../../components/hooks/useTrans';
 const useStyles = makeStyles((theme) => ({
     root: {
         height: '100%',
-        marginTop: theme.spacing(4)
-        // backgroundColor: '#eceff1',
+        marginTop: theme.spacing(2),
+        marginBottom: theme.spacing(4),
+        // backgroundColor: 'red',
     },
     paper: {
         // marginTop: theme.spacing(8),
@@ -20,17 +21,17 @@ const useStyles = makeStyles((theme) => ({
         flexDirection: 'column',
         alignItems: 'center',
         // justifyContent: 'center',
-        width: '100%',
-        height: '85%',
-        backgroundColor: '#eceff1',
-        borderRadius: 10
+        // width: '100%',
+        height: '100%',
+        borderRadius: 10,
+        paddingBottom: theme.spacing(4)
     },
     paperMobile: {
         // marginTop: theme.spacing(8),
         display: 'flex',
         flexDirection: 'column',
         alignItems: 'center',
-        backgroundColor: '#eceff1',
+        // backgroundColor: '#eceff1',
         borderRadius: 10,
         paddingBottom: theme.spacing(3)
     },
@@ -41,6 +42,7 @@ export default function ToeicContainer() {
     const t = useTrans()
     const router = useRouter()
     const theme = useTheme()
+    const mode = theme.palette.type.toString();
     const sm = useMediaQuery(theme.breakpoints.down("xs"));
     const xs = useMediaQuery(theme.breakpoints.down("md"));
     const go = (e, link) => {
@@ -58,7 +60,8 @@ export default function ToeicContainer() {
             link: '/utilities/toeic/part-2',
             disable: true
         },
-        { title: t.utilities.toeic.partThree,
+        {
+            title: t.utilities.toeic.partThree,
             link: '/utilities/toeic/part-3',
             disable: true
         },
@@ -94,26 +97,30 @@ export default function ToeicContainer() {
     return (
         <Container component="main" className={classes.root}>
             <CssBaseline />
-            <div className={sm || xs ? classes.paperMobile : classes.paper}>
-                <div style={{height:'30%'}}>
+            <div className={sm || xs ? classes.paperMobile : classes.paper} style={{backgroundColor: mode === 'light'? '#eceff1': '#1f2936'}}>
+                <div>
                     <Typography component="h1" variant="h5" color='primary' style={{ fontWeight: 'bold', margin: 50 }}>
                         {t.utilities.toeic.title}
-                </Typography>
+                    </Typography>
                 </div>
-                <div style={{height:'70%'}}  >
-                    <div className="bg-primary">
-                        <Grid container spacing={3} > 
+                <div className="d-flex align-items-center" style={{
+                    height: '80%', display: "flex",
+                    flexDirection: "column",
+                    justifyContent: "center"
+                }} >
+                    <div>
+                        <Grid container spacing={3} >
                             {menus1.map((menu, index) => (
-                                <Grid item xs={12} sm={6} md={3} lg={3} key={index} style={{display: 'flex', justifyContent: 'center'}}>
+                                <Grid item xs={12} sm={6} md={3} lg={3} key={index} style={{ display: 'flex', justifyContent: 'center' }}>
                                     <CardMenu title={menu.title} disable={menu.disable} link={menu.link} go={go} />
                                 </Grid>
                             ))}
                         </Grid>
                     </div>
-                    <div>
+                    <div style={{ marginTop: 30 }}>
                         <Grid container spacing={3}>
                             {menus2.map((menu, index) => (
-                                <Grid item xs={12} sm={6} md={3} lg={3} key={index} style={{display: 'flex', justifyContent: 'center'}}>
+                                <Grid item xs={12} sm={6} md={3} lg={3} key={index} style={{ display: 'flex', justifyContent: 'center' }}>
                                     <CardMenu title={menu.title} disable={menu.disable} link={menu.link} go={go} />
                                 </Grid>
                             ))}

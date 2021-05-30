@@ -8,15 +8,8 @@ const useStyles = makeStyles((theme) => ({
         height: '100%'
     },
     content: {
-        height: '100%'
-    },
-    leftContent: {
-        backgroundImage: "url('/about.jpeg')",
-        backgroundRepeat: 'no-repeat',
-        backgroundSize: 'cover',
-        backgroundPosition: 'center',
-        height: '100%'
-    },
+        height: '100vh'
+    }
 }));
 export default function AboutContainer() {
     const t = useTrans()

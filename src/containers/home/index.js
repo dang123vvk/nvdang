@@ -8,7 +8,7 @@ const useStyles = makeStyles((theme) => ({
         height: '100%'
     },
     content: {
-        height: '100%',
+        height: '100vh',
     },
 }));
 export default function Home() {
