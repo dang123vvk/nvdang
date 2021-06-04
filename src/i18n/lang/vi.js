@@ -10,7 +10,8 @@ export default {
             ecommerce: 'Thương mại điện tử',
             testing: 'Trắc nghiệm',
             toeic: 'TOEIC'
-        }
+        },
+        home: 'Trang chủ'
     },
     about: {
         name: "Mình là Nguyễn Văn Đặng",
@@ -30,7 +31,14 @@ export default {
             partSeven: 'Phần 7',
             fullTest: 'Đầy đủ',
             test: 'Kiểm thử',
-            learn: 'Học'
+            learn: 'Học',
+            generic: {
+                timeUp: 'Hết giờ',
+                start: 'Bắt đầu',
+                numberQuestions: 'Số lượng câu hỏi',
+                timer: 'Thời gian',
+                minutes: 'phút'
+            }
         }
     }
 }

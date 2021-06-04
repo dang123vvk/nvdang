@@ -10,7 +10,8 @@ export default {
             ecommerce: 'Ecommerce',
             testing: 'Testing',
             toeic: 'TOEIC'
-        }
+        }, 
+        home: 'Home'
     },
     about: {
         name: "I am Dang.",
@@ -30,7 +31,14 @@ export default {
             partSeven: 'Part 7',
             fullTest: 'Full Test',
             test: 'Test',
-            learn: 'Learn'
+            learn: 'Learn',
+            generic: {
+                timeUp: 'Time\'s up',
+                start: 'Start',
+                numberQuestions: 'Number of questions',
+                timer: 'Timer',
+                minutes: 'minutes'
+            }
         }
     }
 }

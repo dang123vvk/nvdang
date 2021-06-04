@@ -15,8 +15,6 @@ export default function AboutContainer() {
     const t = useTrans()
     const theme = useTheme()
     const mode = theme.palette.type.toString();
-    // const sm = useMediaQuery(theme.breakpoints.down("xs"));
-    // const xs = useMediaQuery(theme.breakpoints.down("md"));
     const classes = useStyles();
     return (
         <div className={classes.content} style={{ backgroundColor: mode === 'dark' ? '#212121' : '#fff' }}>

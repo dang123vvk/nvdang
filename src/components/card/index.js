@@ -1,5 +1,5 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
@@ -19,6 +19,8 @@ const useStyles = makeStyles({
 export default function CardMenu({title, link, disable, go}) {
     const classes = useStyles();
     const t = useTrans()
+    const theme = useTheme()
+    const mode = theme.palette.type.toString();
     return (
         <Card className={classes.root}>
             <CardActionArea>
@@ -29,13 +31,13 @@ export default function CardMenu({title, link, disable, go}) {
                     image="https://source.unsplash.com/random"
                     title="Contemplative Reptile"
                 />
-                <CardContent>
-                    <Typography gutterBottom variant="h5" component="h2" color='secondary' style={{fontWeight: 'bold'}}>{title}</Typography>
+                <CardContent style={{backgroundColor:mode==='light' ?'#ffffff':'#4b5563'}}>
+                    <Typography gutterBottom variant="h5" component="h2"  style={{fontWeight: 'bold'}}>{title}</Typography>
                 </CardContent>
             </CardActionArea>
-            <CardActions>
-                <Button size="small" color="secondary" disabled={disable} onClick={e=>go(e,link)}>{t.utilities.toeic.test}</Button>
-                <Button size="small" color="primary" disabled>{t.utilities.toeic.learn}</Button>
+            <CardActions style={{backgroundColor:mode==='light' ?'#ffffff':'#4b5563'}}>
+                <Button size="small"  disabled={disable} onClick={e=>go(e,link)}>{t.utilities.toeic.test}</Button>
+                <Button size="small"  disabled>{t.utilities.toeic.learn}</Button>
             </CardActions>
         </Card>
     );

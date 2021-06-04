@@ -14,16 +14,17 @@ function MyApp(props) {
   const { Component, pageProps } = props;
   const [modeTheme, setModeTheme] = useState('light')
   useEffect(() => {
+    if (window.matchMedia('(prefers-color-scheme: dark)').matches) setModeTheme('dark'); else setModeTheme('light');
     // Remove the server-side injected CSS.
     const jssStyles = document.querySelector('#jss-server-side');
     if (jssStyles) {
       jssStyles.parentElement.removeChild(jssStyles);
     }
   }, []);
-const changeModeTheme = (e,modeTheme) => {
-  e.preventDefault();
-  setModeTheme(modeTheme);
-}
+  const changeModeTheme = (e, modeTheme) => {
+    e.preventDefault();
+    setModeTheme(modeTheme);
+  }
   return (
     <Provider store={store}>
       <React.Fragment>
@@ -46,11 +47,11 @@ const changeModeTheme = (e,modeTheme) => {
             }}
           />
         </Head>
-        <ThemeProvider theme={modeTheme==='light' ? themeLight: themeDart}>
+        <ThemeProvider theme={modeTheme === 'light' ? themeLight : themeDart}>
           <CssBaseline />
-          <div style={{ display: 'flex', flexDirection: 'column', height: 'auto', minHeight: '100vh', backgroundColor: modeTheme==='light' ?'#ffffff': '#4b5563' }}>
-            <Header changeModeTheme ={changeModeTheme} modeTheme={modeTheme}/>
-            <main style={{ height: '100%',  }}>
+          <div style={{ display: 'flex', flexDirection: 'column', height: 'auto', minHeight: '100vh', backgroundColor: modeTheme === 'light' ? '#ffffff' : '#4b5563' }}>
+            <Header changeModeTheme={changeModeTheme} modeTheme={modeTheme} />
+            <main style={{ height: '100%', }}>
               <Component {...pageProps} />
             </main>
           </div>

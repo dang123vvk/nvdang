@@ -11,7 +11,7 @@ const useStyles = makeStyles((theme) => ({
         height: '100vh',
     },
 }));
-export default function Home() {
+export default function Main() {
     const theme = useTheme()
     const t = useTrans()
     const mode = theme.palette.type.toString();
