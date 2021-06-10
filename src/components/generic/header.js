@@ -128,7 +128,7 @@ function Header({modeTheme, changeModeTheme}) {
         </ListItem>
         <Collapse in={openMobileUtility} timeout="auto" unmountOnExit>
         <List component="div" disablePadding>
-          <ListItem button className={classes.nested} onClick={e=>goTo(e,'/utilities/cv')}>
+          <ListItem button className={classes.nested} onClick={e=>goTo(e,'/utilities/resume')}>
             <ListItemText primary={t.menu.utility.cv} />
           </ListItem>
           <ListItem button className={classes.nested}>

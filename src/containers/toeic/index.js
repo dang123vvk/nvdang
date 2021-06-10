@@ -99,7 +99,7 @@ export default function ToeicContainer() {
             <CssBaseline />
             <div className={sm || xs ? classes.paperMobile : classes.paper} style={{backgroundColor: mode === 'light'? '#eceff1': '#1f2936'}}>
                 <div>
-                    <Typography component="h1" variant="h5" color='primary' style={{ fontWeight: 'bold', margin: 50 }}>
+                    <Typography component="h1" variant="h5"  style={{ fontWeight: 'bold', margin: 50 }}>
                         {t.utilities.toeic.title}
                     </Typography>
                 </div>

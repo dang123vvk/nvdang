@@ -6,7 +6,7 @@ export default {
         about: "Về tôi",
         modeTheme: 'Chế độ sáng/tối',
         utility: {
-            cv: 'CV',
+            cv: 'Resume',
             ecommerce: 'Thương mại điện tử',
             testing: 'Trắc nghiệm',
             toeic: 'TOEIC'
@@ -31,13 +31,17 @@ export default {
             partSeven: 'Phần 7',
             fullTest: 'Đầy đủ',
             test: 'Kiểm thử',
-            learn: 'Học',
+            learn: 'Tài liệu',
             generic: {
                 timeUp: 'Hết giờ',
                 start: 'Bắt đầu',
                 numberQuestions: 'Số lượng câu hỏi',
                 timer: 'Thời gian',
-                minutes: 'phút'
+                minutes: 'phút',
+                result: 'Kết quả',
+                correct: 'Chính xác',
+                notCorrect: 'Không chính xác',
+                submit: 'Nộp bài'
             }
         }
     }

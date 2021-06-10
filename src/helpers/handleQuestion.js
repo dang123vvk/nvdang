@@ -17,5 +17,5 @@ export const checkAnswers = (count = 5, selected = {}, answers = []) => {
             countAnswer += 1
         }
     }
-    return `Result: ${String(countAnswer)}/${String(count)}`
+    return `${String(countAnswer)}/${String(count)}`
 }

@@ -19,7 +19,7 @@ export default function UtilityMenu({anchorRef, open, handleClose, handleListKey
               <Paper>
                 <ClickAwayListener onClickAway={handleClose}>
                   <MenuList >
-                    <MenuItem onClick={e=>onClick(e,'/utilities/cv')}>{t.menu.utility.cv}</MenuItem>
+                    <MenuItem onClick={e=>onClick(e,'/utilities/resume')}>{t.menu.utility.cv}</MenuItem>
                     <MenuItem onClick={handleClose}>{t.menu.utility.ecommerce}</MenuItem>
                     <MenuItem >{t.menu.utility.testing}</MenuItem>
                     <MenuItem  onClick={e=>onClick(e,'/utilities/toeic')}>{t.menu.utility.toeic}</MenuItem>

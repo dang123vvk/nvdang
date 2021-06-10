@@ -6,7 +6,7 @@ export default {
         about: "About",
         modeTheme: 'Light/Dark theme',
         utility: {
-            cv: 'CV',
+            cv: 'Resume',
             ecommerce: 'Ecommerce',
             testing: 'Testing',
             toeic: 'TOEIC'
@@ -37,7 +37,11 @@ export default {
                 start: 'Start',
                 numberQuestions: 'Number of questions',
                 timer: 'Timer',
-                minutes: 'minutes'
+                minutes: 'minutes',
+                result: 'Result',
+                correct: 'Correct',
+                notCorrect: 'This is not correct',
+                submit: 'Submit'
             }
         }
     }

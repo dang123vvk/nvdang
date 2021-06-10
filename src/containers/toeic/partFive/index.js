@@ -175,7 +175,7 @@ export default function PartFive() {
                     </div>
                     {counter === 0 || isSubmit ?
                         <div style={{ paddingLeft: sm || xs ? 10 : 30, paddingTop: sm || xs ? 20 : 0, fontSize: 30, fontWeight: 'bold', color: counter < 60 ? '#ff1744' : '' }} className='d-flex align-items-center'>
-                            {checkAnswers(sizeQuestions, listAnswers, partFives)}
+                            {`${t.utilities.toeic.generic.result}: ${checkAnswers(sizeQuestions, listAnswers, partFives)}`}
                         </div>
                         : ''
                     }
@@ -196,7 +196,7 @@ export default function PartFive() {
                                             <FormControlLabel className={mode === 'light' ? classes.answerTitleLight : classes.answerTitleDark} value="optionD" control={<Radio />} label={question.optionD} />
                                         </RadioGroup>
                                         <FormHelperText style={{ marginLeft: 30, marginBottom: isSubmit ? 15 : 0, fontSize: 20, fontWeight: 'bold' }}>{!isSubmit ? '' : (
-                                            checkAnswer(isSubmit, listAnswers[question.id], question.answer) ? <span style={{ color: "#090" }}>Correct</span> : <span>That is not correct</span>)}
+                                            checkAnswer(isSubmit, listAnswers[question.id], question.answer) ? <span style={{ color: "#090" }}>{t.utilities.toeic.generic.correct}</span> : <span>{t.utilities.toeic.generic.notCorrect}</span>)}
                                         </FormHelperText>
                                     </FormControl>
                                     {isSubmit && (
@@ -217,7 +217,7 @@ export default function PartFive() {
                     <div style={{ paddingTop: 20, paddingBottom: 20 }}>
                         <Grid container >
                             {/* <Button variant="contained" color="primary" style={{ marginRight: 30 }} onClick={clearAll} disabled={!(Object.keys(listAnswers).length === sizeQuestions) || isSubmit}>Clear All</Button> */}
-                            <Button variant="contained" color="secondary" onClick={onSubmit} disabled={!(Object.keys(listAnswers).length === sizeQuestions) || isSubmit}>Submit</Button>
+                            <Button variant="contained"  onClick={onSubmit} disabled={!(Object.keys(listAnswers).length === sizeQuestions) || isSubmit}>{t.utilities.toeic.generic.submit}</Button>
                         </Grid>
                     </div>}
             </div>
