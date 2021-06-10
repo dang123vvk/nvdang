@@ -8,18 +8,19 @@ const useStyles = makeStyles((theme) => ({
         height: '100%'
     },
     content: {
-        height: '100vh',
+        height: 'calc(100vh - 64px)',
+        // overflowX: 'hidden'
     },
 }));
 export default function Main() {
-    const theme = useTheme()
+    // const theme = useTheme()
     const t = useTrans()
-    const mode = theme.palette.type.toString();
+    // const mode = theme.palette.type.toString();
     // const sm = useMediaQuery(theme.breakpoints.down("xs"));
     // const xs = useMediaQuery(theme.breakpoints.down("md"));
     const classes = useStyles();
     return (
-        <div className={classes.content} style={{ backgroundColor: mode === 'dark' ? '#212121' : '#fff' }}>
+        <div className={classes.content}>
             <Grid container component="main" className={classes.root} color={'initial'} >
                 <CssBaseline />
                 <Grid item xs={12} >
