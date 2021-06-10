@@ -15,7 +15,8 @@ export const themeDart = createMuiTheme({
       main: red.A400,
     },
     background: {
-      default: '#fff',
+      default: '#1f2936',
+      paper: '#4b5563'
     },
   },
 });
