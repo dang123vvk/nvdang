@@ -9,6 +9,10 @@ const useStyles = makeStyles((theme) => ({
     },
     content: {
         height: 'calc(100vh - 64px)',
+    },
+    textStyle: {
+        marginTop: 20,
+        marginRight: 30
     }
 }));
 export default function AboutContainer() {
@@ -20,10 +24,10 @@ export default function AboutContainer() {
                 <CssBaseline />
                 <Grid item xs={12} >
                     <div className="d-flex flex-column justify-content-start align-items-end w-100 h-100">
-                        <h1 style={{ marginTop: 20, marginRight: 30 }}>{t.menu.about}</h1>
-                        <h5 style={{ marginTop: 20, marginRight: 30 }}>{t.about.name}</h5>
-                        <h5 style={{ marginTop: 20, marginRight: 30 }}>{t.about.from}</h5>
-                        <h5 style={{ marginTop: 20, marginRight: 30 }}>{t.about.special}</h5>
+                        <h1 className={classes.textStyle}>{t.menu.about}</h1>
+                        <h5 className={classes.textStyle}>{t.about.name}</h5>
+                        <h5 className={classes.textStyle}>{t.about.from}</h5>
+                        <h5 className={classes.textStyle}>{t.about.special}</h5>
                     </div>
                 </Grid>
             </Grid>

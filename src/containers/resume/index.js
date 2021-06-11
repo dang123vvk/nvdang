@@ -79,7 +79,7 @@ export default function ResumeContainter() {
                 </Typography>
             </div> */}
             <div>
-                <InformationCard />
+                <InformationCard mode={mode} mobile={sm || xs} />
             </div>
         </Container>
     );

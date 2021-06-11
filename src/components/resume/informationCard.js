@@ -8,6 +8,8 @@ import Button from '@material-ui/core/Button';
 import TextInfoContent from '@mui-treasury/components/content/textInfo';
 import { useBlogTextInfoContentStyles } from '@mui-treasury/styles/textInfoContent/blog';
 import { useOverShadowStyles } from '@mui-treasury/styles/shadow/over';
+import { Typography } from '@material-ui/core';
+import dayjs from 'dayjs'
 
 const useStyles = makeStyles(({ breakpoints, spacing }) => ({
   root: {
@@ -19,28 +21,24 @@ const useStyles = makeStyles(({ breakpoints, spacing }) => ({
     maxWidth: 500,
     marginLeft: 'auto',
     overflow: 'initial',
-    background: '#ffffff',
     display: 'flex',
-    flexDirection: 'column',
-    alignItems: 'center',
-    paddingBottom: spacing(2),
-    [breakpoints.up('md')]: {
-      flexDirection: 'row',
+    // backgroundColor: '#1f3f52',
+    flexDirection: 'row',
       paddingTop: spacing(2),
-    },
+    alignItems: 'center',
+    paddingBottom: spacing(2)
   },
   media: {
-    width: '88%',
+    // width: '88%',
     marginLeft: 'auto',
     marginRight: 'auto',
-    marginTop: spacing(-3),
+    // marginTop: spacing(-3),
     height: 0,
     paddingBottom: '48%',
     borderRadius: spacing(2),
-    backgroundColor: '#fff',
     position: 'relative',
     [breakpoints.up('md')]: {
-      width: '50%',
+      width: '48%',
       marginLeft: spacing(-3),
       marginTop: 0,
       transform: 'translateX(-8px)',
@@ -66,7 +64,7 @@ const useStyles = makeStyles(({ breakpoints, spacing }) => ({
   },
 }));
 
-export const InformationCard = React.memo(function BlogCard() {
+export const InformationCard = React.memo(function BlogCard({mode, mobile}) {
   const styles = useStyles();
   const {
     button: buttonStyles,
@@ -74,23 +72,21 @@ export const InformationCard = React.memo(function BlogCard() {
   } = useBlogTextInfoContentStyles();
   const shadowStyles = useOverShadowStyles();
   return (
-    <Card className={cx(styles.root, shadowStyles.root)}>
+    <Card className={cx(styles.root, shadowStyles.root)} style={{backgroundColor: mode==='light' ? '#e7edf3': '#1f3f52'}}>
       <CardMedia
         className={styles.media}
+        style={{width: mobile ? '40%' :'50%', height: mobile ? '240px' : '261px' }}
         image={
           '/nvdang.png'
         }
       />
-      <CardContent>
-        <TextInfoContent
+      <CardContent >
+      <TextInfoContent
           classes={contentStyles}
-        //   overline={'28 MAR 2019'}
+          overline={dayjs().format('DD MMM YYYY')           }
           heading={'NGUYEN VAN DANG'}
-          body={
-            '12.09.1997'
-          }
         />
-        {/* <Button className={buttonStyles}>Read more</Button> */}
+        <Typography>12.09.1997</Typography>
       </CardContent>
     </Card>
   );
