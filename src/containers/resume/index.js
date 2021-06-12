@@ -1,6 +1,5 @@
 import React from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import Typography from '@material-ui/core/Typography';
 import { makeStyles, useTheme } from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import { useMediaQuery } from '@material-ui/core';

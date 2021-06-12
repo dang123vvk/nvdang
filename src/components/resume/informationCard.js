@@ -1,95 +1,84 @@
 import React from 'react';
-import cx from 'clsx';
 import { makeStyles } from '@material-ui/core/styles';
-import Card from '@material-ui/core/Card';
-import CardMedia from '@material-ui/core/CardMedia';
-import CardContent from '@material-ui/core/CardContent';
-import Button from '@material-ui/core/Button';
-import TextInfoContent from '@mui-treasury/components/content/textInfo';
-import { useBlogTextInfoContentStyles } from '@mui-treasury/styles/textInfoContent/blog';
-import { useOverShadowStyles } from '@mui-treasury/styles/shadow/over';
-import { Typography } from '@material-ui/core';
-import dayjs from 'dayjs'
+import Grid from '@material-ui/core/Grid';
+import Paper from '@material-ui/core/Paper';
+import Typography from '@material-ui/core/Typography';
+import ButtonBase from '@material-ui/core/ButtonBase';
 
-const useStyles = makeStyles(({ breakpoints, spacing }) => ({
+const useStyles = makeStyles((theme) => ({
   root: {
+    flexGrow: 1,
+  },
+  paper: {
+    // padding: theme.spacing(2),
     margin: 'auto',
-    borderRadius: spacing(2), // 16px
-    transition: '0.3s',
-    boxShadow: '0px 14px 80px rgba(34, 35, 58, 0.2)',
-    position: 'relative',
-    maxWidth: 500,
-    marginLeft: 'auto',
-    overflow: 'initial',
-    display: 'flex',
-    // backgroundColor: '#1f3f52',
-    flexDirection: 'row',
-      paddingTop: spacing(2),
-    alignItems: 'center',
-    paddingBottom: spacing(2)
+    borderRadius: 20
   },
-  media: {
-    // width: '88%',
-    marginLeft: 'auto',
-    marginRight: 'auto',
-    // marginTop: spacing(-3),
-    height: 0,
-    paddingBottom: '48%',
-    borderRadius: spacing(2),
-    position: 'relative',
-    [breakpoints.up('md')]: {
-      width: '48%',
-      marginLeft: spacing(-3),
-      marginTop: 0,
-      transform: 'translateX(-8px)',
-    },
-    '&:after': {
-      content: '" "',
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      width: '100%',
-      height: '100%',
-      // backgroundImage: 'linear-gradient(to right, #0f2027, #203a43, #2c5364)',
-      borderRadius: spacing(2), // 16
-      opacity: 0.5,
-    },
+  inforBasic: {
+    backgroundColor: '#F5F6F8',
+    width: 300,
+    borderRadius: 20,
+    height: 500
   },
-  content: {
-    padding: 24,
+  inforBasicAvatar: {
+    width: '100%',
+    height: '30%',
+    display: 'flex', 
+    justifyContent: 'center'
+  }
+  ,
+  image: {
+    width: 150,
+    height: 150,
+    marginTop: theme.spacing(3)
   },
-  cta: {
-    marginTop: 24,
-    textTransform: 'initial',
+  img: {
+    margin: 'auto',
+    display: 'block',
+    maxWidth: '100%',
+    maxHeight: '100%',
   },
 }));
 
-export const InformationCard = React.memo(function BlogCard({mode, mobile}) {
-  const styles = useStyles();
-  const {
-    button: buttonStyles,
-    ...contentStyles
-  } = useBlogTextInfoContentStyles();
-  const shadowStyles = useOverShadowStyles();
-  return (
-    <Card className={cx(styles.root, shadowStyles.root)} style={{backgroundColor: mode==='light' ? '#e7edf3': '#1f3f52'}}>
-      <CardMedia
-        className={styles.media}
-        style={{width: mobile ? '40%' :'50%', height: mobile ? '240px' : '261px' }}
-        image={
-          '/nvdang.png'
-        }
-      />
-      <CardContent >
-      <TextInfoContent
-          classes={contentStyles}
-          overline={dayjs().format('DD MMM YYYY')           }
-          heading={'NGUYEN VAN DANG'}
-        />
-        <Typography>12.09.1997</Typography>
-      </CardContent>
-    </Card>
-  );
-});
+export default function InformationCard() {
+  const classes = useStyles();
 
-export default InformationCard
+  return (
+    <div className={classes.root}>
+      <Paper className={classes.paper} color='primary'>
+        <Grid container >
+          <Grid item className={classes.inforBasic} container>
+            <Grid item xs={12} className={classes.inforBasicAvatar}>
+              <ButtonBase className={classes.image}>
+                <img className={classes.img} alt="complex" src="/nvdang.png" />
+              </ButtonBase>
+            </Grid>
+          </Grid>
+          <Grid item xs={12} sm container>
+            <Grid item xs={12} container direction="column" spacing={2}>
+              <Grid item xs>
+                <Typography gutterBottom variant="subtitle1">
+                
+                </Typography>
+                <Typography variant="body2" gutterBottom>
+                
+                </Typography>
+                <Typography variant="body2" color="textSecondary">
+                
+                </Typography>
+              </Grid>
+              <Grid item>
+                <Typography variant="body2" style={{ cursor: 'pointer' }}>
+                  
+                </Typography>
+              </Grid>
+            </Grid>
+            <Grid item>
+              <Typography variant="subtitle1"></Typography>
+            </Grid>
+          </Grid>
+        </Grid>
+      </Paper>
+    </div>
+  );
+}
