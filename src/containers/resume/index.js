@@ -5,6 +5,7 @@ import Container from '@material-ui/core/Container';
 import { useMediaQuery } from '@material-ui/core';
 import useTrans from '../../components/hooks/useTrans';
 import InformationCard from '../../components/resume/informationCard';
+import InformationCardMobile from '../../components/resume/informationCardMobile';
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -78,7 +79,10 @@ export default function ResumeContainter() {
                 </Typography>
             </div> */}
             <div>
-                <InformationCard mode={mode} mobile={sm || xs} />
+                {
+                    sm || xs ? <InformationCardMobile /> : <InformationCard mode={mode} mobile={sm || xs} />
+                }
+
             </div>
         </Container>
     );
