@@ -108,25 +108,29 @@ export default function InformationCardMobile() {
                   </IconButton>
                 ))}
               </div>
-              <div className='d-flex justify-content-center mt-3'>
+              <div className='d-flex justify-content-center'>
+              <div className='d-flex flex-column mt-3'>
+              <div >
                 <Typography gutterBottom variant="body1" style={{ color: '#13374A' }}>
                   <CalendarTodayIcon />&nbsp; September 12, 1997
                 </Typography>
               </div>
-              <div className='d-flex justify-content-center mt-2'>
+              <div className='mt-2'>
                 <Typography gutterBottom variant="body1" style={{ color: '#13374A' }} >
                   <LocationOnIcon />&nbsp; Ho Chi Minh, Vietnam
                 </Typography>
               </div>
-              <div className='d-flex justify-content-center mt-2'>
+              <div className='mt-2'>
                 <Typography gutterBottom variant="body1" style={{ color: '#13374A'}} >
                   <EmailIcon />&nbsp; dang123vvk@gmail.com
                 </Typography>
               </div>
-              <div className='d-flex justify-content-center mt-2'>
+              <div className='mt-2'>
                 <Typography gutterBottom variant="body1" style={{ color: '#13374A' }} >
                   <PhoneIphoneIcon />&nbsp; (+84) 398 577 544
                 </Typography>
+              </div>
+              </div>
               </div>
               <div className='d-flex justify-content-center mt-4'>
                 <Button
