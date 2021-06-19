@@ -1,5 +1,5 @@
 
-import { SERVER } from '../config';
+import { SERVER } from '../../config/environment';
 import axios from 'axios';
 import { createAuthHeader } from './header';
 import cookie from 'react-cookies';
