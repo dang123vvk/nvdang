@@ -1,17 +1,42 @@
 import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import Head from 'next/head';
-import { ThemeProvider } from '@material-ui/core/styles';
+import { makeStyles, ThemeProvider } from '@material-ui/core/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import { themeDart, themeLight } from '../src/config/theme';
+import { themeDark, themeLight } from '../src/config/theme/theme';
 import { Provider } from 'react-redux';
 import store from '../src/redux/store'
 import 'animate.css';
 import 'bootstrap/dist/css/bootstrap.css';
-// import dynamic from 'next/dynamic';
-import Header from '../src/components/generic/header'
+import Header from '../src/components/header'
+
+const useStyles = makeStyles({
+  root: {
+    display: 'flex',
+    flexDirection: 'column',
+    height: 'auto',
+    minHeight: '100vh',
+  },
+  main: {
+    height: '100%'
+  }
+});
+
+const BACKGROUND_COLOR_DARK = '#4b5563';
+const BACKGROUND_COLOR_LIGHT = '#ffffff';
+
+const styleBackgroundMain = (mode = 'dark') => {
+  if (mode === 'dark')
+    return {
+      backgroundColor: BACKGROUND_COLOR_DARK
+    }
+  return {
+    backgroundColor: BACKGROUND_COLOR_LIGHT
+  }
+}
 function MyApp(props) {
   const { Component, pageProps } = props;
+  const classes = useStyles();
   const [modeTheme, setModeTheme] = useState('light')
   useEffect(() => {
     if (window.matchMedia('(prefers-color-scheme: dark)').matches) setModeTheme('dark'); else setModeTheme('light');
@@ -47,11 +72,11 @@ function MyApp(props) {
             }}
           />
         </Head>
-        <ThemeProvider theme={modeTheme === 'light' ? themeLight : themeDart}>
+        <ThemeProvider theme={modeTheme === 'light' ? themeLight : themeDark}>
           <CssBaseline />
-          <div style={{ display: 'flex', flexDirection: 'column', height: 'auto', minHeight: '100vh', backgroundColor: modeTheme === 'light' ? '#ffffff' : '#4b5563' }}>
+          <div className={classes.root} style={styleBackgroundMain(modeTheme)}>
             <Header changeModeTheme={changeModeTheme} modeTheme={modeTheme} />
-            <main style={{ height: '100%', }}>
+            <main className={classes.main}>
               <Component {...pageProps} />
             </main>
           </div>

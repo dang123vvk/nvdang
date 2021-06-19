@@ -15,9 +15,15 @@ const useStyles = makeStyles((theme) => ({
         marginRight: 30
     }
 }));
+
 export default function AboutContainer() {
     const t = useTrans()
     const classes = useStyles();
+    const contents = [
+        t.about.name,
+        t.about.from,
+        t.about.special
+    ]
     return (
         <div className={classes.content}>
             <Grid container component="main" className={classes.root} >
@@ -25,9 +31,9 @@ export default function AboutContainer() {
                 <Grid item xs={12} >
                     <div className="d-flex flex-column justify-content-start align-items-end w-100 h-100">
                         <h1 className={classes.textStyle}>{t.menu.about}</h1>
-                        <h5 className={classes.textStyle}>{t.about.name}</h5>
-                        <h5 className={classes.textStyle}>{t.about.from}</h5>
-                        <h5 className={classes.textStyle}>{t.about.special}</h5>
+                        {contents.map((data, index) => (
+                            <h5 className={classes.textStyle} key={index}>{data}</h5>
+                        ))}
                     </div>
                 </Grid>
             </Grid>

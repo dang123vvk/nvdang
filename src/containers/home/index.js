@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Grid from '@material-ui/core/Grid';
-import { makeStyles, useMediaQuery, useTheme } from '@material-ui/core';
+import { makeStyles, useMediaQuery, useTheme, Typography } from '@material-ui/core';
 import useTrans from '../../components/hooks/useTrans';
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -25,7 +25,7 @@ export default function Main() {
                 <CssBaseline />
                 <Grid item xs={12} >
                     <div className="d-flex justify-content-center align-items-center w-100 h-100">
-                        <h1 className="animate__animated animate__bounce animate__infinite">{t.coming}</h1>
+                        <Typography className="animate__animated animate__bounce animate__infinite" variant="h4" gutterBottom>{t.coming}</Typography>
                     </div>
                 </Grid>
             </Grid>

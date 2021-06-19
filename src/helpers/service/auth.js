@@ -1,5 +1,5 @@
 
-import { SERVER } from '../config';
+import { SERVER } from '../../config/environment';
 import axios from 'axios';
 
 export const signIn = async (data) => {

@@ -66,7 +66,13 @@ const useStyles = makeStyles((theme) => ({
         color: '#ffffff'
     }
 }));
-
+const numberQuestions = [5, 10, 20, 40];
+const counters = [
+    { value: 600, title: '10' },
+    { value: 1200, title: '20' },
+    { value: 2400, title: '40' }
+]
+const 
 export default function PartFive() {
     const classes = useStyles();
     const dispatch = useDispatch();
@@ -125,12 +131,10 @@ export default function PartFive() {
                                 id="demo-simple-select-outlined"
                                 label="numbers"
                                 value={sizeQuestions}
-                                onChange={e => setSizeQuestions(e.target.value)}
-                            >
-                                <MenuItem value={5}>5</MenuItem>
-                                <MenuItem value={10}>10</MenuItem>
-                                <MenuItem value={20}>20</MenuItem>
-                                <MenuItem value={40}>40</MenuItem>
+                                onChange={e => setSizeQuestions(e.target.value)}>
+                                {numberQuestions.map((data, index) => (
+                                    <MenuItem value={data} key={index}>{data}</MenuItem>
+                                ))}
                             </Select>
                         </FormControl>
                     </div>
@@ -148,9 +152,9 @@ export default function PartFive() {
                                     setKey(prevKey => prevKey + 1)
                                 }}
                             >
-                                <MenuItem value={60}>{`10 ${t.utilities.toeic.generic.minutes}`}</MenuItem>
-                                <MenuItem value={1200}>{`20 ${t.utilities.toeic.generic.minutes}`}</MenuItem>
-                                <MenuItem value={2400}>{`40 ${t.utilities.toeic.generic.minutes}`}</MenuItem>
+                                {counters.map((data, index) => (
+                                    <MenuItem value={data.value} key={index}>{`${data.title} ${t.utilities.toeic.generic.minutes}`}</MenuItem>
+                                ))}
                             </Select>
                         </FormControl>
                     </div>
@@ -200,7 +204,7 @@ export default function PartFive() {
                                         </FormHelperText>
                                     </FormControl>
                                     {isSubmit && (
-                                        <div style={{ minHeight: 150, backgroundColor: mode=== 'light' ? '#f0f3f4': '#4b5563', boxShadow: mode==='light' ?'4px 4px 4px #dcdcdc' :'', borderRadius: 6, padding: 15 }}>
+                                        <div style={{ minHeight: 150, backgroundColor: mode === 'light' ? '#f0f3f4' : '#4b5563', boxShadow: mode === 'light' ? '4px 4px 4px #dcdcdc' : '', borderRadius: 6, padding: 15 }}>
                                             <div><span>{question.translateTitle}</span></div>
                                             <div style={{ marginLeft: 15, color: checkAnswer(isSubmit, 'optionA', question.answer) ? '#ff1744' : '', fontWeight: checkAnswer(isSubmit, 'optionA', question.answer) ? 'bold' : '' }}><span>{`A. ${question.translateA}`}</span></div>
                                             <div style={{ marginLeft: 15, color: checkAnswer(isSubmit, 'optionB', question.answer) ? '#ff1744' : '', fontWeight: checkAnswer(isSubmit, 'optionB', question.answer) ? 'bold' : '' }}><span>{`B. ${question.translateB}`}</span></div>
@@ -217,7 +221,7 @@ export default function PartFive() {
                     <div style={{ paddingTop: 20, paddingBottom: 20 }}>
                         <Grid container >
                             {/* <Button variant="contained" color="primary" style={{ marginRight: 30 }} onClick={clearAll} disabled={!(Object.keys(listAnswers).length === sizeQuestions) || isSubmit}>Clear All</Button> */}
-                            <Button variant="contained"  onClick={onSubmit} disabled={!(Object.keys(listAnswers).length === sizeQuestions) || isSubmit}>{t.utilities.toeic.generic.submit}</Button>
+                            <Button variant="contained" onClick={onSubmit} disabled={!(Object.keys(listAnswers).length === sizeQuestions) || isSubmit}>{t.utilities.toeic.generic.submit}</Button>
                         </Grid>
                     </div>}
             </div>
