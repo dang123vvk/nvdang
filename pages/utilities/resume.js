@@ -1,4 +1,4 @@
-import { Breadcrumbs, Typography } from "@material-ui/core";
+import { Breadcrumbs, Typography, LinearProgress } from "@material-ui/core";
 import Link from "next/link";
 // import PartFive from "../../../src/containers/toeic/partFive";
 import dynamic from 'next/dynamic'
@@ -6,7 +6,7 @@ import useTrans from "../../src/components/hooks/useTrans";
 
 const DynamicComponentWithCustomLoading = dynamic(
   () => import('../../src/containers/resume/index'),
-  { loading: () => <p>...</p> }
+  { loading: () => <LinearProgress /> }
 )
 
 const resume = () => {

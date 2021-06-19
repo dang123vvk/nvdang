@@ -1,7 +1,12 @@
-import { Breadcrumbs, Typography } from '@material-ui/core';
+import { Breadcrumbs, Typography, LinearProgress } from '@material-ui/core';
+import dynamic from 'next/dynamic';
 import Link from 'next/link';
 import useTrans from '../../../src/components/hooks/useTrans';
-import ToeicContainer from '../../../src/containers/toeic'
+
+const DynamicComponentWithCustomLoading = dynamic(
+    () => import('../../../src/containers/toeic'),
+    { loading: () => <LinearProgress /> }
+)
 const toeic = () => {
     const t = useTrans()
     return (
@@ -13,7 +18,7 @@ const toeic = () => {
                     <Typography color="textPrimary">Toeic</Typography>
                 </Breadcrumbs>
             </div>
-            <ToeicContainer />
+            <DynamicComponentWithCustomLoading />
         </div>
 
     )
