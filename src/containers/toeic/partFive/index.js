@@ -72,7 +72,6 @@ const counters = [
     { value: 1200, title: '20' },
     { value: 2400, title: '40' }
 ]
-const 
 export default function PartFive() {
     const classes = useStyles();
     const dispatch = useDispatch();
