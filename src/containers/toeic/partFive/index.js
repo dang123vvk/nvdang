@@ -1,23 +1,13 @@
 import React, { useEffect, useState } from 'react';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles, useTheme } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
 import { useDispatch, useSelector } from 'react-redux';
 import { exeGetPartFivesAction } from '../../../redux/action/partFiveAction';
-import { FormControlLabel, Radio, RadioGroup, Button, FormControl, FormHelperText, InputLabel, Select, MenuItem, useMediaQuery } from '@material-ui/core';
+import { FormControlLabel, Radio, RadioGroup, Button, FormControl, FormHelperText, InputLabel, Select, MenuItem, useMediaQuery, makeStyles, useTheme, Typography, Grid } from '@material-ui/core';
 import { checkAnswer, checkAnswers, displayTime } from '../../../helpers/handleQuestion';
 import { CountdownCircleTimer } from "react-countdown-circle-timer";
 import useTrans from '../../../components/hooks/useTrans';
+import ContainerAuto from '../../../components/layout/layoutAuto';
 
 const useStyles = makeStyles((theme) => ({
-    root: {
-        height: '100%',
-        marginTop: theme.spacing(4),
-        marginBottom: theme.spacing(4),
-        // backgroundColor: '#eceff1',
-    },
     paperLight: {
         // marginTop: theme.spacing(8),
         display: 'flex',
@@ -115,8 +105,7 @@ export default function PartFive() {
         );
     };
     return (
-        <Container component="main" className={classes.root}>
-            <CssBaseline />
+        <ContainerAuto >
             <div className={mode === 'light' ? classes.paperLight : classes.paperDark}>
                 <Typography component="p" variant="body1" style={{ fontWeight: 'bold', margin: 30 }}>
                     TOEIC® READING part 5
@@ -224,6 +213,6 @@ export default function PartFive() {
                         </Grid>
                     </div>}
             </div>
-        </Container>
+        </ContainerAuto>
     );
 }

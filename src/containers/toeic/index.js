@@ -1,20 +1,12 @@
 import React from 'react';
-import CssBaseline from '@material-ui/core/CssBaseline';
-import Grid from '@material-ui/core/Grid';
-import Typography from '@material-ui/core/Typography';
-import { makeStyles } from '@material-ui/core/styles';
-import Container from '@material-ui/core/Container';
 import CardMenu from '../../components/card';
-import { useMediaQuery, useTheme } from '@material-ui/core'
+import { useMediaQuery, useTheme, Grid, Typography, makeStyles } from '@material-ui/core'
 import { useRouter } from 'next/router';
 import useTrans from '../../components/hooks/useTrans';
+import ContainerAuto from '../../components/layout/layoutAuto';
+
+
 const useStyles = makeStyles((theme) => ({
-    root: {
-        height: '100%',
-        marginTop: theme.spacing(2),
-        marginBottom: theme.spacing(4),
-        // backgroundColor: 'red',
-    },
     paper: {
         // marginTop: theme.spacing(8),
         display: 'flex',
@@ -95,11 +87,10 @@ export default function ToeicContainer() {
         }
     ]
     return (
-        <Container component="main" className={classes.root}>
-            <CssBaseline />
-            <div className={sm || xs ? classes.paperMobile : classes.paper} style={{backgroundColor: mode === 'light'? '#eceff1': '#1f2936'}}>
+        <ContainerAuto >
+            <div className={sm || xs ? classes.paperMobile : classes.paper} style={{ backgroundColor: mode === 'light' ? '#eceff1' : '#1f2936' }}>
                 <div>
-                    <Typography component="h1" variant="h5"  style={{ fontWeight: 'bold', margin: 50 }}>
+                    <Typography component="h1" variant="h5" style={{ fontWeight: 'bold', margin: 50 }}>
                         {t.utilities.toeic.title}
                     </Typography>
                 </div>
@@ -128,6 +119,6 @@ export default function ToeicContainer() {
                     </div>
                 </div>
             </div>
-        </Container>
+        </ContainerAuto>
     );
 }
