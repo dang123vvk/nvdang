@@ -5,7 +5,6 @@ import { useRouter } from 'next/router';
 import useTrans from '../../components/hooks/useTrans';
 import ContainerAuto from '../../components/layout/layoutAuto';
 
-
 const useStyles = makeStyles((theme) => ({
     paper: {
         // marginTop: theme.spacing(8),

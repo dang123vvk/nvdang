@@ -69,8 +69,8 @@ export default function PartFive() {
     const [key, setKey] = useState(0);
     const [isSubmit, setIsSubmit] = useState(false)
     const [isStarted, setIsStarted] = useState(false)
-    const [counter, setCounter] = useState(60);
-    const [timer, setTimer] = useState(60);
+    const [counter, setCounter] = useState(600);
+    const [timer, setTimer] = useState(600);
     const [sizeQuestions, setSizeQuestions] = useState(5);
     const partFives = useSelector(state => state.partFiveReducer.list)
     const theme = useTheme()

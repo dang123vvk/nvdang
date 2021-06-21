@@ -1,9 +1,11 @@
-import { Breadcrumbs, Typography, LinearProgress } from "@material-ui/core";
-import Link from "next/link";
-// import PartFive from "../../../src/containers/toeic/partFive";
+import { LinearProgress } from "@material-ui/core";
 import dynamic from 'next/dynamic'
 import useTrans from "../../src/components/hooks/useTrans";
 import Head from 'next/head';
+import { useRouter } from "next/router";
+import { splitRoutes, titleRouters } from "../../src/helpers/handleRoute";
+import Breadcrumb from '../../src/components/breadcumbs';
+
 
 const DynamicComponentWithCustomLoading = dynamic(
     () => import('../../src/containers/resume/index'),
@@ -11,7 +13,9 @@ const DynamicComponentWithCustomLoading = dynamic(
 )
 
 const resume = () => {
-    const t = useTrans()
+    const t = useTrans();
+    const router = useRouter();
+    const listPath = splitRoutes(router.pathname, titleRouters(t));
     return (
         <div>
             <Head>
@@ -24,11 +28,7 @@ const resume = () => {
                 <link rel="icon" href="/favicon.ico" />
             </Head>
             <div className='d-flex justify-content-center mt-3'>
-                <Breadcrumbs aria-label="breadcrumb">
-                    <Link href="/"><a style={{ textDecoration: 'none' }}><Typography color="textPrimary">{t.menu.home}</Typography></a></Link>
-                    <Link href="/" ><a style={{ textDecoration: 'none' }}><Typography color="textPrimary">{t.menu.utilities}</Typography></a></Link>
-                    <Typography color="textPrimary">{t.menu.utility.cv}</Typography>
-                </Breadcrumbs>
+                <Breadcrumb links={listPath} last={t.menu.utility.cv} />
             </div>
             <DynamicComponentWithCustomLoading />
         </div>
