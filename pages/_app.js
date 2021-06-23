@@ -8,6 +8,7 @@ import { Provider } from 'react-redux';
 import store from '../src/redux/store'
 import 'animate.css';
 import 'bootstrap/dist/css/bootstrap.css';
+import '../src/components/styles/main.scss'
 import Header from '../src/components/header'
 
 const useStyles = makeStyles({

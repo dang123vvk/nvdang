@@ -18,7 +18,7 @@ export default {
         from: "Hiện tại mình sống ở thành phố Hồ Chí Minh.",
         special : "Mình là một người hơi trẻ tầm 30 tuổi...😔😔😔"
     },
-    coming: 'Hãy chờ đợi bạn 😉😉😉 ',
+    coming: 'Hãy chờ 😉😉😉 ',
     utilities: {
         toeic: {
             title: 'Trắc nghiệm Toeic Beta',

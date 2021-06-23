@@ -17,17 +17,17 @@ import PhoneIphoneIcon from '@material-ui/icons/PhoneIphone';
 import GetAppIcon from '@material-ui/icons/GetApp';
 
 const socialNetworks = [{
-  icon: <FacebookIcon  style={{color: '#656667'}}/>,
+  icon: <FacebookIcon style={{ color: '#656667' }} />,
   link: 'https://facebook.com/dang123vvk'
 },
 {
-  icon: <InstagramIcon style={{color: '#656667'}} />,
+  icon: <InstagramIcon style={{ color: '#656667' }} />,
   link: 'https://instagram.com/dang.van.nguyen'
 }, {
-  icon: <GitHubIcon  style={{color: '#656667'}} />,
+  icon: <GitHubIcon style={{ color: '#656667' }} />,
   link: 'https://github.com/nvdang-dev'
 }, {
-  icon: <LinkedInIcon  style={{color: '#656667'}} />,
+  icon: <LinkedInIcon style={{ color: '#656667' }} />,
   link: 'https://github.com/nvdang-dev'
 }]
 const useStyles = makeStyles((theme) => ({
@@ -43,6 +43,7 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: '#F5F6F8',
     width: 300,
     borderRadius: 20,
+    zIndex: 2
   },
   gridBottom: {
     height: 400
@@ -74,7 +75,7 @@ const useStyles = makeStyles((theme) => ({
     borderRadius: 15,
     backgroundColor: '#2C4AF5',
     color: '#ffffff',
-    textTransform: 'none', 
+    textTransform: 'none',
     height: 45,
     "&:hover": {
       backgroundColor: "#1097DE",
@@ -140,27 +141,32 @@ export default function InformationCard() {
               </div>
             </Grid>
           </Grid>
-          <Grid item xs={12} sm container>
+          <Grid item xs={12} sm container style={{ borderTopRightRadius: 20, borderBottomRightRadius: 20, marginLeft: -20, paddingLeft: 40, paddingTop: 30 }} className='div-custom'>
             <Grid item xs={12} container direction="column" spacing={2}>
               <Grid item xs>
-                <Typography gutterBottom variant="h2">
+                <Typography gutterBottom variant="h4" style={{ color: '#13374A', fontWeight: 'bold' }}>
                   About Me
                 </Typography>
-                <Typography variant="body2" gutterBottom>
-
+                <Typography variant="body2" gutterBottom style={{ color: '#13374A' }}>
+                  I am a Frontend Developer from Ho Chi Minh, Vietnam. I am so young (only 23 years old). I enjoy turning complex problems into simple.
                 </Typography>
-                <Typography variant="body2" color="textSecondary">
-
-                </Typography>
-              </Grid>
-              <Grid item>
-                <Typography variant="body2" style={{ cursor: 'pointer' }}>
-
+                <br />
+                <Typography variant="body2" gutterBottom style={{ color: '#13374A' }}>
+                  My job is to build your website so that it is functional and user-friendly but at the same time attractive. Moreover, I like this job, I want to challenge myself with the impossible things. My aim is to bring across your idea to reality in the most creative way.
                 </Typography>
               </Grid>
             </Grid>
-            <Grid item>
-              <Typography variant="subtitle1"></Typography>
+            <Grid item xs={12} container direction="column" spacing={2}>
+              <Grid item xs>
+                <Typography gutterBottom variant="h4" style={{ color: '#13374A', fontWeight: 'bold' }}>
+                  Works
+                </Typography>
+              </Grid>
+              <Grid item xs>
+                <Typography gutterBottom variant="h4" style={{ color: '#13374A', fontWeight: 'bold' }}>
+                  Works
+                </Typography>
+              </Grid>
             </Grid>
           </Grid>
         </Grid>

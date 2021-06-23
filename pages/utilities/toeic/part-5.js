@@ -5,6 +5,7 @@ import Head from 'next/head';
 import { splitRoutes, titleRouters } from "../../../src/helpers/handleRoute";
 import { useRouter } from "next/router";
 import Breadcrumb from '../../../src/components/breadcumbs';
+
 const DynamicComponentWithCustomLoading = dynamic(
     () => import('../../../src/containers/toeic/partFive'),
     { loading: () => <LinearProgress /> }

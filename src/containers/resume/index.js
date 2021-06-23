@@ -14,7 +14,7 @@ export default function ResumeContainter() {
         <ContainerAuto >
             <div>
                 {
-                    sm || xs ? <InformationCardMobile /> : <InformationCard mode={mode} mobile={sm || xs} />
+                    sm  ? <InformationCardMobile /> : <InformationCard mode={mode} mobile={sm || xs} />
                 }
 
             </div>
