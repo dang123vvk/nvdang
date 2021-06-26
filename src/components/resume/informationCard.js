@@ -1,10 +1,5 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import Grid from '@material-ui/core/Grid';
-import Paper from '@material-ui/core/Paper';
-import Typography from '@material-ui/core/Typography';
-import ButtonBase from '@material-ui/core/ButtonBase';
-import { Chip, Button } from '@material-ui/core';
+import { Chip, Button, Paper, Typography, ButtonBase, Grid, makeStyles } from '@material-ui/core';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import IconButton from '@material-ui/core/IconButton';
 import InstagramIcon from '@material-ui/icons/Instagram';
@@ -15,6 +10,7 @@ import LocationOnIcon from '@material-ui/icons/LocationOn';
 import EmailIcon from '@material-ui/icons/Email';
 import PhoneIphoneIcon from '@material-ui/icons/PhoneIphone';
 import GetAppIcon from '@material-ui/icons/GetApp';
+import ChipCustom from './chip'
 
 const socialNetworks = [{
   icon: <FacebookIcon style={{ color: '#656667' }} />,
@@ -46,11 +42,11 @@ const useStyles = makeStyles((theme) => ({
     zIndex: 2
   },
   gridBottom: {
-    height: 400
+    // height: 'auto'
   },
   inforBasicAvatar: {
     width: '100%',
-    height: '30%',
+    height: 200,
     display: 'flex',
     justifyContent: 'center'
   },
@@ -90,13 +86,13 @@ export default function InformationCard() {
     <div className={classes.root}>
       <Paper className={classes.paper} color='primary'>
         <Grid container >
-          <Grid item className={classes.inforBasic} container>
-            <Grid item xs={12} className={classes.inforBasicAvatar}>
-              <ButtonBase className={classes.image}>
-                <img className={classes.img} alt="complex" src="/nvdang.png" />
-              </ButtonBase>
-            </Grid>
+          <Grid item className={classes.inforBasic} container >
             <Grid item xs={12} className={classes.gridBottom} >
+              <div className='d-flex justify-content-center'>
+                <ButtonBase className={classes.image}>
+                  <img className={classes.img} alt="complex" src="/nvdang.png" />
+                </ButtonBase>
+              </div>
               <Typography gutterBottom variant="h4" style={{ color: '#13374A' }} className='d-flex justify-content-center'>
                 Dang&nbsp;<b>Nguyen</b>
               </Typography>
@@ -152,20 +148,129 @@ export default function InformationCard() {
                 </Typography>
                 <br />
                 <Typography variant="body2" gutterBottom style={{ color: '#13374A' }}>
-                  My job is to build your website so that it is functional and user-friendly but at the same time attractive. Moreover, I like this job, I want to challenge myself with the impossible things. My aim is to bring across your idea to reality in the most creative way.
+                  My job is to build your website so that it is functional and user-friendly but at the same time attractive. Moreover, I like my job, I want to challenge myself with the impossible things. My aim is to bring across your idea to reality in the most creative way.
                 </Typography>
               </Grid>
             </Grid>
             <Grid item xs={12} container direction="column" spacing={2}>
               <Grid item xs>
                 <Typography gutterBottom variant="h4" style={{ color: '#13374A', fontWeight: 'bold' }}>
-                  Works
+                  Education
+                </Typography>
+                <Typography gutterBottom variant="h6" style={{ color: '#13374A', fontWeight: 'bold', fontSize: 15 }}>
+                  Can Tho University
+                </Typography>
+                <Typography gutterBottom variant="body2" style={{ color: '#13374A' }}>
+                  My major is Information Technology.
+                </Typography>
+                <Typography gutterBottom variant="body2" style={{ color: '#13374A' }}>
+                  My GPA is 3.3
+                </Typography>
+                <Typography gutterBottom variant="body2" style={{ color: '#13374A' }}>
+                  My thesis is building chatbot using GAN and Reinforcement learning for Data Vietnamese
+                  Algorithms implemented in Python.
                 </Typography>
               </Grid>
               <Grid item xs>
                 <Typography gutterBottom variant="h4" style={{ color: '#13374A', fontWeight: 'bold' }}>
-                  Works
+                  Skills
                 </Typography>
+                <div style={{ display: 'flex', flexDirection: 'column' }}>
+                  <div style={{ display: 'flex', flexDirection: 'row' }}>
+                    <Typography gutterBottom variant="h6" style={{ color: '#13374A', fontWeight: 'bold', fontSize: 15, marginRight: 30, width: 75 }}>
+                      Programing
+                    </Typography>
+                    <ChipCustom label="JavaScript" />
+                    <ChipCustom label="CSS" />
+                    <ChipCustom label="HTML" />
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'row', marginTop: 15 }}>
+                    <Typography gutterBottom variant="h6" style={{ color: '#13374A', fontWeight: 'bold', fontSize: 15, marginRight: 30, width: 75 }}>
+                      Framework
+                    </Typography>
+                    <ChipCustom label="ReactJS" />
+                    <ChipCustom label="NextJS" />
+                    <ChipCustom label="EmberJS" />
+                    <ChipCustom label="ElectronJS" />
+                    <ChipCustom label="ExpressJS" />
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'row', marginTop: 15 }}>
+                    <Typography gutterBottom variant="h6" style={{ color: '#13374A', fontWeight: 'bold', fontSize: 15, marginRight: 30, width: 75 }}>
+                      Database
+                    </Typography>
+                    <ChipCustom label="SQL" />
+                    <ChipCustom label="Mongo" />
+                    <ChipCustom label="PostgreSQL" />
+                  </div>
+                </div>
+              </Grid>
+              <Grid item xs>
+                <Typography gutterBottom variant="h4" style={{ color: '#13374A', fontWeight: 'bold' }}>
+                  Experience
+                </Typography>
+                <div style={{ display: 'flex', flexDirection: 'column' }}>
+                  <div style={{ display: 'flex', flexDirection: 'column' }}>
+                    <div>
+                      <Typography gutterBottom variant="h6" style={{ color: '#13374A', fontWeight: 'bold', fontSize: 15, marginRight: 30 }}>
+                        Parttime
+                      </Typography>
+                    </div>
+                    <div>
+                      <Typography gutterBottom variant="body2" style={{ color: '#13374A', marginRight: 30 }}>
+                        May 2018 - Dec 2018
+                      </Typography>
+                    </div>
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'column' }}>
+                    <div>
+                      <Typography gutterBottom variant="h6" style={{ color: '#13374A', fontWeight: 'bold', fontSize: 15, marginRight: 30 }}>
+                        Tracking and managing Asset Platform
+                      </Typography>
+                    </div>
+                    <div>
+                      <Typography gutterBottom variant="body2" style={{ color: '#13374A', marginRight: 30 }}>
+                        Jul 2019 - Dec 2019
+                      </Typography>
+                    </div>
+
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'column' }}>
+                    <div>
+                      <Typography gutterBottom variant="h6" style={{ color: '#13374A', fontWeight: 'bold', fontSize: 15, marginRight: 30 }}>
+                        Management system for Company
+                      </Typography>
+                    </div>
+                    <div>
+                      <Typography gutterBottom variant="body2" style={{ color: '#13374A', marginRight: 30 }}>
+                        Mar 2020 - Sep 2020
+                      </Typography>
+                    </div>
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'column' }}>
+                    <div>
+                      <Typography gutterBottom variant="h6" style={{ color: '#13374A', fontWeight: 'bold', fontSize: 15, marginRight: 30 }}>
+                        App Desktop
+                      </Typography>
+                    </div>
+                    <div>
+                      <Typography gutterBottom variant="body2" style={{ color: '#13374A', marginRight: 30 }}>
+                        Oct 2020 - Apr 2021
+                      </Typography>
+                    </div>
+                  </div>
+                  <div style={{ display: 'flex', flexDirection: 'column' }}>
+                    <div>
+                      <Typography gutterBottom variant="h6" style={{ color: '#13374A', fontWeight: 'bold', fontSize: 15, marginRight: 30 }}>
+                        Management system for Start up
+                      </Typography>
+                    </div>
+                    <div>
+                      <Typography gutterBottom variant="body2" style={{ color: '#13374A', marginRight: 30 }}>
+                        Apr 2021  - Present
+                      </Typography>
+                    </div>
+                  </div>
+                </div>
               </Grid>
             </Grid>
           </Grid>
