@@ -11,7 +11,7 @@ import EmailIcon from '@material-ui/icons/Email';
 import PhoneIphoneIcon from '@material-ui/icons/PhoneIphone';
 import GetAppIcon from '@material-ui/icons/GetApp';
 import ChipCustom from './chip'
-import { savePDF } from "@progress/kendo-react-pdf";
+import { savePDF, PDFExport } from "@progress/kendo-react-pdf";
 
 const socialNetworks = [{
   icon: <FacebookIcon style={{ color: '#656667' }} />,
@@ -34,21 +34,21 @@ const useStyles = makeStyles((theme) => ({
   paper: {
     // padding: theme.spacing(2),
     margin: 'auto',
-    borderRadius: 20
+    borderRadius: 20,
+    width: '21cm',
+    backgroundColor: 'white',
+    border: '1px solid #F5F6F8'
   },
   inforBasic: {
     backgroundColor: '#F5F6F8',
     width: '100%',
-    minWidth: 240,
+    minWidth: 210,
     borderRadius: 20,
-    zIndex: 2
-  },
-  gridBottom: {
-    // height: 'auto'
+    zIndex: 2,
   },
   inforBasicAvatar: {
     width: '100%',
-    height: 200,
+    height: 150,
     display: 'flex',
     justifyContent: 'center'
   },
@@ -64,7 +64,7 @@ const useStyles = makeStyles((theme) => ({
     maxHeight: '100%',
   },
   iconButton: {
-    marginRight: theme.spacing(1),
+    // marginRight: 2,
     // marginLeft: theme.spacing(1),
   },
   button: {
@@ -83,19 +83,22 @@ const useStyles = makeStyles((theme) => ({
 
 export default function InformationCard() {
   const classes = useStyles();
-  const container = useRef(null);
-  const exportPDFWithMethod = () => {
-    let element = container.current || document.body;
-    savePDF(element, {
-      paperSize: "A2",
-      margin: 20,
-      fileName: `Report for ${new Date().getFullYear()}`,
-    });
+  const pdfExportComponent = useRef(null);
+  const exportPDF = () => {
+    if (pdfExportComponent.current) {
+      pdfExportComponent.current.save();
+    }
   };
   return (
     <div className={classes.root}>
-    
-        <Paper className={classes.paper} color='primary' ref={container}>
+      <PDFExport
+        ref={pdfExportComponent}
+        paperSize="A4"
+        margin={20}
+        fileName={`Report for ${new Date().getFullYear()}`}
+        author="KendoReact Team"
+      >
+        <Paper className={classes.paper} color='primary' >
           <Grid container >
             <Grid item xs={6} sm={4} md={3} lg={3} className={classes.inforBasic} container >
               <Grid item xs={12} className={classes.gridBottom} >
@@ -104,7 +107,7 @@ export default function InformationCard() {
                     <img className={classes.img} alt="complex" src="/nvdang.png" />
                   </ButtonBase>
                 </div>
-                <Typography gutterBottom variant="h4" style={{ color: '#13374A' }} className='d-flex justify-content-center'>
+                <Typography gutterBottom variant="h5" style={{ color: '#13374A' }} className='d-flex justify-content-center'>
                   Dang&nbsp;<b>Nguyen</b>
                 </Typography>
                 <div className='d-flex justify-content-center'>
@@ -118,22 +121,22 @@ export default function InformationCard() {
                   ))}
                 </div>
                 <div className='mt-3'>
-                  <Typography gutterBottom variant="body1" style={{ color: '#13374A', marginLeft: 25 }}>
+                  <Typography gutterBottom variant="body1" style={{ color: '#13374A', fontSize: 14, marginLeft: 15 }}>
                     <CalendarTodayIcon />&nbsp; September 12, 1997
                   </Typography>
                 </div>
                 <div className='mt-2'>
-                  <Typography gutterBottom variant="body1" style={{ color: '#13374A', marginLeft: 25 }} >
+                  <Typography gutterBottom variant="body1" style={{ color: '#13374A', fontSize: 14, marginLeft: 15 }} >
                     <LocationOnIcon />&nbsp; Ho Chi Minh, Vietnam
                   </Typography>
                 </div>
                 <div className='mt-2'>
-                  <Typography gutterBottom variant="body1" style={{ color: '#13374A', marginLeft: 25 }} >
+                  <Typography gutterBottom variant="body1" style={{ color: '#13374A', fontSize: 14, marginLeft: 15 }} >
                     <EmailIcon />&nbsp; dang123vvk@gmail.com
                   </Typography>
                 </div>
                 <div className='mt-2'>
-                  <Typography gutterBottom variant="body1" style={{ color: '#13374A', marginLeft: 25 }} >
+                  <Typography gutterBottom variant="body1" style={{ color: '#13374A', fontSize: 14, marginLeft: 15 }} >
                     <PhoneIphoneIcon />&nbsp; (+84) 398 577 544
                   </Typography>
                 </div>
@@ -142,17 +145,17 @@ export default function InformationCard() {
                     variant="contained"
                     className={classes.button}
                     startIcon={<GetAppIcon />}
-                    onClick={exportPDFWithMethod}
+                    onClick={exportPDF}
                   >
                     Download CV
                   </Button>
                 </div>
               </Grid>
             </Grid>
-            <Grid item xs={6} sm={8} md={9} lg={9} sm container style={{ borderTopRightRadius: 20, borderBottomRightRadius: 20, marginLeft: -20, paddingLeft: 40, paddingTop: 30 }} className='div-custom'>
+            <Grid item xs={6} sm={8} md={9} lg={9} sm container style={{  borderTopRightRadius: 20, borderBottomRightRadius: 20, marginLeft: -20, paddingLeft: 40, paddingTop: 30 }} className='div-custom'>
               <Grid item xs={12} container direction="column" spacing={2}>
                 <Grid item xs>
-                  <Typography gutterBottom variant="h4" style={{ color: '#13374A', fontWeight: 'bold' }}>
+                  <Typography gutterBottom variant="h6" style={{ color: '#13374A', fontWeight: 'bold' }}>
                     About Me
                   </Typography>
                   <Typography variant="body2" gutterBottom style={{ color: '#13374A' }}>
@@ -165,7 +168,7 @@ export default function InformationCard() {
               </Grid>
               <Grid item xs={12} container direction="column" spacing={2}>
                 <Grid item xs>
-                  <Typography gutterBottom variant="h4" style={{ color: '#13374A', fontWeight: 'bold' }}>
+                  <Typography gutterBottom variant="h6" style={{ color: '#13374A', fontWeight: 'bold' }}>
                     Education
                   </Typography>
                   <Typography gutterBottom variant="h6" style={{ color: '#13374A', fontWeight: 'bold', fontSize: 15 }}>
@@ -183,7 +186,7 @@ export default function InformationCard() {
                   </Typography>
                 </Grid>
                 <Grid item xs>
-                  <Typography gutterBottom variant="h4" style={{ color: '#13374A', fontWeight: 'bold' }}>
+                  <Typography gutterBottom variant="h6" style={{ color: '#13374A', fontWeight: 'bold' }}>
                     Skills
                   </Typography>
                   <p style={{ marginRight: 30 }}>
@@ -197,7 +200,7 @@ export default function InformationCard() {
                   </p>
                 </Grid>
                 <Grid item xs>
-                  <Typography gutterBottom variant="h4" style={{ color: '#13374A', fontWeight: 'bold' }}>
+                  <Typography gutterBottom variant="h6" style={{ color: '#13374A', fontWeight: 'bold' }}>
                     Experience
                   </Typography>
                   <div style={{ display: 'flex', flexDirection: 'column', paddingBottom: 35 }}>
@@ -268,6 +271,7 @@ export default function InformationCard() {
             </Grid>
           </Grid>
         </Paper>
+      </PDFExport>
     </div>
   );
 }
