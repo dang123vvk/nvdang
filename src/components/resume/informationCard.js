@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { Chip, Button, Paper, Typography, ButtonBase, Grid, makeStyles } from '@material-ui/core';
 import FacebookIcon from '@material-ui/icons/Facebook';
 import IconButton from '@material-ui/core/IconButton';
@@ -63,9 +63,26 @@ const useStyles = makeStyles((theme) => ({
     maxWidth: '100%',
     maxHeight: '100%',
   },
-  iconButton: {
-    // marginRight: 2,
-    // marginLeft: theme.spacing(1),
+  text1: {
+    color: '#13374A', fontSize: 12, marginLeft: 15
+  },
+  text2: {
+    color: '#13374A', fontWeight: 'bold' , fontSize: 17
+  },
+  text3: {
+    color: '#13374A', fontWeight: 'bold', fontSize: 14 
+  },
+  text4: {
+    color: '#13374A' , fontSize: 12
+  },
+  text5: {
+     fontWeight: 'normal', fontSize: 12, color: '#13374A' 
+  },
+  text6: {
+    color: '#13374A', fontWeight: 'bold', fontSize: 14, marginRight: 30
+  },
+  text7: {
+    color: '#13374A', marginRight: 30, fontSize: 12
   },
   button: {
     marginRight: theme.spacing(1),
@@ -84,9 +101,14 @@ const useStyles = makeStyles((theme) => ({
 export default function InformationCard() {
   const classes = useStyles();
   const pdfExportComponent = useRef(null);
+  const [hiddenButtonDownload, setHiddenButtonDownload] = useState(false);
   const exportPDF = () => {
+    setHiddenButtonDownload(true)
     if (pdfExportComponent.current) {
       pdfExportComponent.current.save();
+      setTimeout(() => {
+        setHiddenButtonDownload(false); 
+      }, 3000);
     }
   };
   return (
@@ -94,9 +116,9 @@ export default function InformationCard() {
       <PDFExport
         ref={pdfExportComponent}
         paperSize="A4"
-        margin={20}
+        margin={10}
         fileName={`Report for ${new Date().getFullYear()}`}
-        author="KendoReact Team"
+        author="Dang Nguyen"
       >
         <Paper className={classes.paper} color='primary' >
           <Grid container >
@@ -121,22 +143,22 @@ export default function InformationCard() {
                   ))}
                 </div>
                 <div className='mt-3'>
-                  <Typography gutterBottom variant="body1" style={{ color: '#13374A', fontSize: 14, marginLeft: 15 }}>
+                  <Typography gutterBottom variant="body1" className={classes.text1}>
                     <CalendarTodayIcon />&nbsp; September 12, 1997
                   </Typography>
                 </div>
                 <div className='mt-2'>
-                  <Typography gutterBottom variant="body1" style={{ color: '#13374A', fontSize: 14, marginLeft: 15 }} >
+                  <Typography gutterBottom variant="body1" className={classes.text1} >
                     <LocationOnIcon />&nbsp; Ho Chi Minh, Vietnam
                   </Typography>
                 </div>
                 <div className='mt-2'>
-                  <Typography gutterBottom variant="body1" style={{ color: '#13374A', fontSize: 14, marginLeft: 15 }} >
+                  <Typography gutterBottom variant="body1" className={classes.text1} >
                     <EmailIcon />&nbsp; dang123vvk@gmail.com
                   </Typography>
                 </div>
                 <div className='mt-2'>
-                  <Typography gutterBottom variant="body1" style={{ color: '#13374A', fontSize: 14, marginLeft: 15 }} >
+                  <Typography gutterBottom variant="body1" className={classes.text1} >
                     <PhoneIphoneIcon />&nbsp; (+84) 398 577 544
                   </Typography>
                 </div>
@@ -146,6 +168,7 @@ export default function InformationCard() {
                     className={classes.button}
                     startIcon={<GetAppIcon />}
                     onClick={exportPDF}
+                    hidden={hiddenButtonDownload}
                   >
                     Download CV
                   </Button>
@@ -155,112 +178,112 @@ export default function InformationCard() {
             <Grid item xs={6} sm={8} md={9} lg={9} sm container style={{  borderTopRightRadius: 20, borderBottomRightRadius: 20, marginLeft: -20, paddingLeft: 40, paddingTop: 30 }} className='div-custom'>
               <Grid item xs={12} container direction="column" spacing={2}>
                 <Grid item xs>
-                  <Typography gutterBottom variant="h6" style={{ color: '#13374A', fontWeight: 'bold' }}>
+                  <Typography gutterBottom variant="h6" className={classes.text2}>
                     About Me
                   </Typography>
-                  <Typography variant="body2" gutterBottom style={{ color: '#13374A' }}>
+                  <Typography variant="body2" gutterBottom className={classes.text4}>
                     I am a Frontend Developer from Ho Chi Minh, Vietnam. I am so young (only 23 years old). I enjoy turning complex problems into simple.
                   </Typography>
-                  <Typography variant="body2" gutterBottom style={{ color: '#13374A' }}>
+                  <Typography variant="body2" gutterBottom className={classes.text4}>
                     My job is to build your website so that it is functional and user-friendly but at the same time attractive. Moreover, I like my job, I want to challenge myself with the impossible things. I aim to bring across your idea to reality in the most creative way.
                   </Typography>
                 </Grid>
               </Grid>
               <Grid item xs={12} container direction="column" spacing={2}>
                 <Grid item xs>
-                  <Typography gutterBottom variant="h6" style={{ color: '#13374A', fontWeight: 'bold' }}>
+                  <Typography gutterBottom variant="h6" className={classes.text2}>
                     Education
                   </Typography>
-                  <Typography gutterBottom variant="h6" style={{ color: '#13374A', fontWeight: 'bold', fontSize: 15 }}>
+                  <Typography gutterBottom variant="h6" className={classes.text3}>
                     Can Tho University
                   </Typography>
-                  <Typography gutterBottom variant="body2" style={{ color: '#13374A' }}>
+                  <Typography gutterBottom variant="body2" className={classes.text4}>
                     My major is Information Technology.
                   </Typography>
-                  <Typography gutterBottom variant="body2" style={{ color: '#13374A' }}>
+                  <Typography gutterBottom variant="body2" className={classes.text4}>
                     My GPA is 3.3
                   </Typography>
-                  <Typography gutterBottom variant="body2" style={{ color: '#13374A' }}>
+                  <Typography gutterBottom variant="body2" className={classes.text4}>
                     My thesis is building chatbot using GAN and Reinforcement learning for Data Vietnamese
                     Algorithms implemented in Python.
                   </Typography>
                 </Grid>
                 <Grid item xs>
-                  <Typography gutterBottom variant="h6" style={{ color: '#13374A', fontWeight: 'bold' }}>
+                  <Typography gutterBottom variant="h6" className={classes.text2}>
                     Skills
                   </Typography>
                   <p style={{ marginRight: 30 }}>
-                    <b style={{ color: '#13374A', fontSize: 15 }}>Programing  &nbsp;</b> <span style={{ fontWeight: 'normal', fontSize: 14, color: '#13374A' }}>JavaScript, CSS, HTML</span>
+                    <b className={classes.text3}>Programing  &nbsp;</b> <span className={classes.text5}>JavaScript, CSS, HTML</span>
                   </p>
                   <p style={{ marginRight: 30 }}>
-                    <b style={{ color: '#13374A', fontSize: 15 }}>Framework  &nbsp;</b> <span style={{ fontWeight: 'normal', fontSize: 14, color: '#13374A' }}>ReactJS, ElectronJS, EmberJS</span>
+                    <b className={classes.text3}>Framework  &nbsp;</b> <span className={classes.text5}>ReactJS, ElectronJS, EmberJS</span>
                   </p>
                   <p style={{ marginRight: 30 }}>
-                    <b style={{ color: '#13374A', fontSize: 15 }}>Database  &nbsp; </b> <span style={{ fontWeight: 'normal', fontSize: 14, color: '#13374A' }}>SQL, PostgreSQL, Mongo</span>
+                    <b className={classes.text3}>Database  &nbsp; </b> <span className={classes.text5}>SQL, PostgreSQL, Mongo</span>
                   </p>
                 </Grid>
                 <Grid item xs>
-                  <Typography gutterBottom variant="h6" style={{ color: '#13374A', fontWeight: 'bold' }}>
+                  <Typography gutterBottom variant="h6" className={classes.text2}>
                     Experience
                   </Typography>
                   <div style={{ display: 'flex', flexDirection: 'column', paddingBottom: 35 }}>
                     <div style={{ display: 'flex', flexDirection: 'column' }}>
                       <div>
-                        <Typography gutterBottom variant="h6" style={{ color: '#13374A', fontWeight: 'bold', fontSize: 15, marginRight: 30 }}>
+                        <Typography gutterBottom variant="h6" className={classes.text6}>
                           Parttime
                         </Typography>
                       </div>
                       <div>
-                        <Typography gutterBottom variant="body2" style={{ color: '#13374A', marginRight: 30 }}>
+                        <Typography gutterBottom variant="body2"  className={classes.text7}>
                           May 2018 - Dec 2018
                         </Typography>
                       </div>
                     </div>
                     <div style={{ display: 'flex', flexDirection: 'column' }}>
                       <div>
-                        <Typography gutterBottom variant="h6" style={{ color: '#13374A', fontWeight: 'bold', fontSize: 15, marginRight: 30 }}>
+                        <Typography gutterBottom variant="h6" className={classes.text6}>
                           Tracking and managing Asset Platform
                         </Typography>
                       </div>
                       <div>
-                        <Typography gutterBottom variant="body2" style={{ color: '#13374A', marginRight: 30 }}>
-                          Jul 2019 - Dec 2019
+                        <Typography gutterBottom variant="body2"  className={classes.text7}>
+                          Jul 2019 - Mar 2020
                         </Typography>
                       </div>
 
                     </div>
                     <div style={{ display: 'flex', flexDirection: 'column' }}>
                       <div>
-                        <Typography gutterBottom variant="h6" style={{ color: '#13374A', fontWeight: 'bold', fontSize: 15, marginRight: 30 }}>
+                        <Typography gutterBottom variant="h6" className={classes.text6}>
                           Management system for Company
                         </Typography>
                       </div>
                       <div>
-                        <Typography gutterBottom variant="body2" style={{ color: '#13374A', marginRight: 30 }}>
+                        <Typography gutterBottom variant="body2"  className={classes.text7}>
                           Mar 2020 - Sep 2020
                         </Typography>
                       </div>
                     </div>
                     <div style={{ display: 'flex', flexDirection: 'column' }}>
                       <div>
-                        <Typography gutterBottom variant="h6" style={{ color: '#13374A', fontWeight: 'bold', fontSize: 15, marginRight: 30 }}>
+                        <Typography gutterBottom variant="h6" className={classes.text6}>
                           App Desktop
                         </Typography>
                       </div>
                       <div>
-                        <Typography gutterBottom variant="body2" style={{ color: '#13374A', marginRight: 30 }}>
+                        <Typography gutterBottom variant="body2"  className={classes.text7}>
                           Oct 2020 - Apr 2021
                         </Typography>
                       </div>
                     </div>
                     <div style={{ display: 'flex', flexDirection: 'column' }}>
                       <div>
-                        <Typography gutterBottom variant="h6" style={{ color: '#13374A', fontWeight: 'bold', fontSize: 15, marginRight: 30 }}>
+                        <Typography gutterBottom variant="h6" className={classes.text6}>
                           Management system for Start up
                         </Typography>
                       </div>
                       <div>
-                        <Typography gutterBottom variant="body2" style={{ color: '#13374A', marginRight: 30 }}>
+                        <Typography gutterBottom variant="body2" className={classes.text7}>
                           Apr 2021  - Present
                         </Typography>
                       </div>
