@@ -16,7 +16,7 @@
     "@progress/kendo-react-pdf": "^4.7.0",
     "@reduxjs/toolkit": "^1.6.0",
     "animate.css": "^4.1.1",
-    "axios": "^0.21.1",
+    "axios": "^0.21.2",
     "bootstrap": "^5.0.1",
     "dayjs": "^1.10.5",
     "next": "^11.0.0",
